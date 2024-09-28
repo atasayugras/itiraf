@@ -1,0 +1,250 @@
+:root {
+  --card-height: 65vh;
+  --card-width: calc(var(--card-height) / 1.5);
+}
+
+body {
+  min-height: 100vh;
+  background: #212534;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 8rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+  overflow: hidden; /* Prevents scroll */
+  margin: 0; /* Removes default margin */
+
+}
+h1 {
+  color: white;
+  font-family: "Titan One", cursive;
+  margin-bottom: 20px;
+}
+.card {
+  background: url("../images/itiraf.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: var(--card-width);
+  height: var(--card-height);
+  padding: 3px;
+  position: relative;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  font-size: 1.5em;
+  color: rgb(88 199 250 / 0%);
+  font-family: "Gloria Hallelujah", cursive;
+}
+
+.card:hover {
+  color: rgba(88, 199, 250, 1); /* Full opacity for hover state */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Adds shadow for depth */
+  transition: color 1s, text-shadow 0.3s; /* Smooth transition */
+}
+.card:hover:before,
+.card:hover:after {
+  animation: none;
+  opacity: 0;
+}
+
+.card::before {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(
+    var(--rotate),
+    #5ddcff,
+    #3c67e3 43%,
+    #4e00c2
+  );
+  position: absolute;
+  z-index: -1;
+  top: -1%;
+  left: -2%;
+  animation: spin 2.5s linear infinite;
+}
+
+.card::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(
+    var(--rotate),
+    #5ddcff,
+    #3c67e3 43%,
+    #4e00c2
+  );
+  opacity: 1;
+  transition: opacity 0.5s;
+  animation: spin 2.5s linear infinite;
+}
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+a {
+  color: #212534;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+.user {
+  color: white;
+  font-size: 24px;
+  font-family: "Titan One", cursive;
+}
+
+
+/* head.ejs styling */
+.nav {
+  width: 100%;
+  padding: 16px;
+  background-color: rgba(34, 34, 34, 0.8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed; /* Fixes the nav to the top */
+  top: 0; /* Positions it at the top */
+  left: 0; /* Ensures it spans the full width */
+  z-index: 1000; /* Keeps it above other elements */
+  box-sizing: border-box;
+}
+
+.nav-button {
+  background-color: rgba(88, 199, 250, 0.8);
+  color: white;
+  border: none;
+  padding: 0.5rem 1.5rem; /* Adjusted padding for better click area */
+  margin-left: auto; /* Pushes the button to the right */
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: "Gloria Hallelujah", cursive;
+  font-size: 1em;
+  transition: background 0.3s;
+}
+
+.nav-button:hover {
+  background-color: rgba(88, 199, 250, 1);
+}
+
+.logo-link {
+  font-size: 1.5em;
+  color: white;
+  text-decoration: none; /* Removes underline */
+  padding: 0; /* Remove any padding */
+  display: inline-block; /* Ensures proper alignment */
+  vertical-align: middle; /* Aligns vertically with the nav */
+  text-align: left;
+  /* Additional reset styles */
+  line-height: normal; /* Resets line height */
+  margin-top: 0; /* Resets any top margin */
+}
+
+.back-button {
+  background-color: rgba(88, 199, 250, 0.8);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px; /* Adjust as needed */
+  text-decoration: none;
+  display: inline-block; /* Ensures proper padding */
+}
+
+
+/* post.ejs styling */
+.input-style, .textarea-style, .button-style {
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  color: white; /* Text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px; /* Padding for comfort */
+  font-size: 1em; /* Consistent font size */
+  font-family: "Gloria Hallelujah", cursive; /* Same font family */
+  width: 100%; /* Full width */
+  box-sizing: border-box; /* Box model */
+}
+
+.input-style, .textarea-style {
+  margin-bottom: 15px; /* Spacing between elements */
+}
+
+.button-style {
+  cursor: pointer; /* Pointer cursor for buttons */
+  transition: background-color 0.3s; /* Smooth background change */
+}
+
+.button-style:hover {
+  background: rgba(255, 255, 255, 0.2); /* Darken on hover */
+}
+
+.container {
+  position: relative; /* Set positioning context */
+  width: var(--card-width);
+  height: auto;
+  padding: 20px;
+  overflow: hidden; /* Prevents overflow from child elements */
+  border-radius: 6px;
+}
+
+.color-animation {
+  content: "";
+  position: absolute;
+  top: 4%;
+  left: 2.5%;
+  right: 2.5%;
+  bottom: 4%;
+  border-radius: 6px;
+  z-index: 1; /* Behind the input container */
+  background-image: linear-gradient(
+    var(--rotate),
+    #5ddcff,
+    #3c67e3 43%,
+    #4e00c2
+  );
+  animation: spin 2.5s linear infinite; /* Color rotation animation */
+}
+
+.input-container {
+  position: relative;
+  background-color: #212534; /* Fixed background color */
+  border-radius: 6px; /* Match the outer layer */
+  padding: 20px; /* Inner padding */
+  z-index: 2; /* On top of the animated layer */
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head.ejs') %>
+<body>
+  <h1>Yeni itiraf</h1>
+  <div class="container">
+    <div class="color-animation"></div>
+    <div class="input-container">
+      <form action="/post" method="POST">
+        <input name="clientUsername" type="text" class="input-style" placeholder="Sen kimsin?" />
+        <textarea name="clientPost" class="textarea-style" placeholder="Anlat anlat..."></textarea>
+        <button type="submit" class="button-style">İtiraf et</button>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
